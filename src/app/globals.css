@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f7f6f4;
+  --foreground: #111111;
+  --hero: #b8d4ff;
+  --hero-deep: #9ec2ff;
+  --cream: #f7f6f4;
+  --muted: #5c5c5c;
+  --border: #e4e2de;
+  --card: #e8f1ff;
+  --blue: #1a56f0;
+  --yellow: #ffd542;
+  --footer: #0a0a0a;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-hero: var(--hero);
+  --color-hero-deep: var(--hero-deep);
+  --color-cream: var(--cream);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-card: var(--card);
+  --color-brand-blue: var(--blue);
+  --color-brand-yellow: var(--yellow);
+  --color-footer: var(--footer);
+  --font-sans: var(--font-roboto);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--cream);
+  color: var(--foreground);
+  font-family: var(--font-roboto), system-ui, sans-serif;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+
+@keyframes word-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-word-in {
+  animation: word-in 0.4s ease-out both;
+}
