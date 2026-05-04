@@ -11,7 +11,7 @@ const tabsForUi = platformTabs.map((t) => ({ id: t.id, label: t.label }));
 
 function MiniGraphic({ seed }: { seed: string }) {
   return (
-    <div className="mt-6 aspect-4/3 w-full overflow-hidden rounded-xl border border-black/5 bg-linear-to-br from-white to-[#eef4ff] p-3">
+    <div className="mt-6 aspect-4/3 w-full overflow-hidden rounded-xl border border-gray-200/40 bg-linear-to-br from-white to-[#eef4ff] p-3">
       <div className="flex h-full flex-col gap-2">
         <div className="h-2 w-1/3 rounded-full bg-black/10" />
         <div className="grid flex-1 grid-cols-2 gap-2">
@@ -32,7 +32,7 @@ function MiniGraphic({ seed }: { seed: string }) {
 function CardGrid({ tabId }: { tabId: PlatformTabId }) {
   const cards = platformCards[tabId];
   return (
-    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-5">
+    <div className="grid gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3 lg:gap-8">
       {cards.map((card) => (
         <Card key={card.title} className="flex flex-col p-6">
           {card.badge ? (
@@ -40,12 +40,12 @@ function CardGrid({ tabId }: { tabId: PlatformTabId }) {
               {card.badge}
             </span>
           ) : null}
-          <h3 className="text-xl font-medium text-[#111] md:text-2xl">{card.title}</h3>
+          <h3 className="text-xl font-medium tracking-[-0.015em] text-gray-900 md:text-2xl">{card.title}</h3>
           <p className="mt-2 flex-1 text-sm leading-relaxed text-gray-600">{card.description}</p>
           <MiniGraphic seed={tabId} />
           <Link
             href="https://app.relyd.co"
-            className="mt-4 inline-flex text-sm font-semibold text-[#111] underline-offset-4 hover:underline"
+            className="mt-4 inline-flex text-sm font-semibold text-gray-900 underline-offset-4 transition-colors duration-300 hover:underline"
           >
             Get started
           </Link>
@@ -57,10 +57,10 @@ function CardGrid({ tabId }: { tabId: PlatformTabId }) {
 
 export function PlatformTabs() {
   return (
-    <Section className="bg-white">
+    <Section className="bg-linear-to-b from-blue-50/40 to-white">
       <Container>
-        <p className="text-center text-xs font-semibold uppercase tracking-[0.25em] text-gray-600">Pricing</p>
-        <h2 className="mx-auto mt-3 max-w-3xl text-balance text-center text-3xl font-semibold tracking-tight text-[#111] md:text-4xl">
+        <p className="text-center text-xs font-semibold uppercase tracking-[0.25em] text-gray-500">Pricing</p>
+        <h2 className="mx-auto mt-5 max-w-3xl text-balance text-center text-3xl font-semibold tracking-[-0.02em] text-gray-900 md:text-4xl">
           Pricing
         </h2>
         <Tabs tabs={tabsForUi} className="mt-10">

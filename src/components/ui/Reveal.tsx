@@ -26,7 +26,7 @@ export function Reveal({ children, className, delayMs = 0 }: Props) {
           io.disconnect();
         }
       },
-      { rootMargin: "0px 0px -10% 0px", threshold: 0.15 },
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.12 },
     );
 
     io.observe(el);
@@ -37,8 +37,8 @@ export function Reveal({ children, className, delayMs = 0 }: Props) {
     <div
       ref={ref}
       className={cn(
-        "transition-all duration-300 ease-out will-change-transform",
-        shown ? "translate-y-0 opacity-100" : "translate-y-5 opacity-0",
+        "transition-all duration-300 ease-out will-change-[transform,opacity]",
+        shown ? "translate-y-0 opacity-100" : "translate-y-[20px] opacity-0",
         className,
       )}
       style={{ transitionDelay: `${delayMs}ms` }}
@@ -47,4 +47,3 @@ export function Reveal({ children, className, delayMs = 0 }: Props) {
     </div>
   );
 }
-

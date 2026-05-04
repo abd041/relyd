@@ -19,11 +19,14 @@ export function Tabs({ tabs, children, className }: Props) {
   const [active, setActive] = useState(tabs[0]?.id ?? "");
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
-  const focusTab = useCallback((index: number) => {
-    const len = tabs.length;
-    const next = (index + len) % len;
-    tabRefs.current[next]?.focus();
-  }, [tabs.length]);
+  const focusTab = useCallback(
+    (index: number) => {
+      const len = tabs.length;
+      const next = (index + len) % len;
+      tabRefs.current[next]?.focus();
+    },
+    [tabs.length],
+  );
 
   const onKeyDown = (e: React.KeyboardEvent, index: number) => {
     if (e.key === "ArrowRight") {
@@ -46,7 +49,7 @@ export function Tabs({ tabs, children, className }: Props) {
       <div
         role="tablist"
         aria-label="Product areas"
-        className="flex flex-wrap justify-center gap-2 border-b border-black/10 pb-4 md:gap-8"
+        className="flex flex-wrap justify-center gap-2 border-b border-gray-200/40 pb-4 md:gap-8"
       >
         {tabs.map((tab, index) => {
           const selected = tab.id === active;
@@ -65,24 +68,19 @@ export function Tabs({ tabs, children, className }: Props) {
               onClick={() => setActive(tab.id)}
               onKeyDown={(e) => onKeyDown(e, index)}
               className={cn(
-                "relative px-2 py-2 text-sm font-medium text-muted transition md:text-base",
-                selected ? "text-[#111]" : "hover:text-[#111]",
+                "relative px-3 py-2.5 text-sm font-medium tracking-tight text-gray-500 transition-all duration-300 ease-out md:text-base",
+                selected ? "text-gray-900" : "hover:text-gray-900",
               )}
             >
               {tab.label}
               {selected ? (
-                <span className="absolute inset-x-0 -bottom-px h-0.5 rounded-full bg-[#111]" />
+                <span className="absolute inset-x-1 -bottom-px h-0.5 rounded-full bg-gray-900" />
               ) : null}
             </button>
           );
         })}
       </div>
-      <div
-        role="tabpanel"
-        id={`${baseId}-panel`}
-        aria-labelledby={`${baseId}-tab-${active}`}
-        className="pt-10"
-      >
+      <div role="tabpanel" id={`${baseId}-panel`} aria-labelledby={`${baseId}-tab-${active}`} className="pt-10 md:pt-12">
         {children(active)}
       </div>
     </div>

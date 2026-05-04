@@ -82,7 +82,7 @@ function Dropdown({
         type="button"
         className={cn(
           "inline-flex items-center gap-1 text-sm font-medium transition",
-          open ? "text-[#111]" : "text-[#111]/80 hover:text-[#111]",
+          open ? "text-gray-900" : "text-gray-600 hover:text-gray-900",
         )}
         aria-haspopup="menu"
         aria-expanded={open}
@@ -96,7 +96,7 @@ function Dropdown({
         role="menu"
         aria-label={label}
         className={cn(
-          "absolute left-0 top-full z-50 mt-3 w-56 origin-top-left rounded-2xl border border-black/10 bg-white p-2 shadow-[0_24px_80px_rgba(17,24,39,0.12)]",
+          "absolute left-0 top-full z-50 mt-3 w-56 origin-top-left rounded-2xl border border-gray-200/40 bg-white p-2 shadow-[0_10px_24px_rgba(0,0,0,0.06),0_24px_48px_rgba(0,0,0,0.08)]",
           open ? "block" : "hidden",
         )}
       >
@@ -105,7 +105,7 @@ function Dropdown({
             key={item.label}
             href={item.href}
             role="menuitem"
-            className="flex items-center justify-between rounded-xl px-3 py-2 text-sm font-medium text-[#111]/85 transition hover:bg-black/5 hover:text-[#111] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#111]"
+            className="flex items-center justify-between rounded-xl px-3 py-2 text-sm font-medium text-gray-600 transition-all duration-300 ease-out hover:bg-gray-50 hover:text-gray-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900"
             onClick={() => {
               setOpen(false);
               onNavigate?.();
@@ -146,12 +146,12 @@ export function Header() {
     <header
       className={cn(
         "sticky top-0 z-50 w-full border-b transition-colors",
-        scrolled ? "border-black/10 bg-white/95 backdrop-blur-md" : "border-transparent bg-white/80 backdrop-blur-sm",
+        scrolled ? "border-gray-200/50 bg-white/95 backdrop-blur-md" : "border-transparent bg-white/85 backdrop-blur-sm",
       )}
     >
       <Container className="flex h-16 items-center justify-between gap-4 lg:h-[72px]">
-        <Link href="/" className="flex items-center gap-2 text-xl font-semibold tracking-tight text-[#111]">
-          <span aria-hidden className="inline-block h-7 w-7 rounded-full bg-[#111]" />
+        <Link href="/" className="flex items-center gap-2 text-xl font-semibold tracking-[-0.02em] text-gray-900">
+          <span aria-hidden className="inline-block h-7 w-7 rounded-full bg-gray-900" />
           relyd
         </Link>
 
@@ -160,7 +160,7 @@ export function Header() {
             <Dropdown key={d.label} label={d.label} items={d.items} />
           ))}
           {topLinks.map((l) => (
-            <Link key={l.label} href={l.href} className="text-sm font-medium text-[#111]/80 transition hover:text-[#111]">
+            <Link key={l.label} href={l.href} className="text-sm font-medium text-gray-600 transition-all duration-300 ease-out hover:text-gray-900">
               {l.label}
             </Link>
           ))}
@@ -177,7 +177,7 @@ export function Header() {
 
         <button
           type="button"
-          className="inline-flex items-center justify-center rounded-lg border border-black/10 p-2 lg:hidden"
+          className="inline-flex items-center justify-center rounded-xl border border-gray-200/50 p-2 transition-colors duration-300 hover:bg-gray-50 lg:hidden"
           aria-expanded={open}
           aria-controls="mobile-nav"
           onClick={() => setOpen((v) => !v)}
@@ -191,31 +191,31 @@ export function Header() {
         id="mobile-nav"
         ref={panelRef}
         hidden={!open}
-        className={cn("border-t border-black/10 bg-white lg:hidden", !open && "hidden")}
+        className={cn("border-t border-gray-200/50 bg-white lg:hidden", !open && "hidden")}
       >
         <Container className="flex flex-col gap-4 py-4">
           <Link
             ref={firstLinkRef}
             href="/pricing"
-            className="text-base font-medium text-[#111]"
+            className="text-base font-medium text-gray-900"
             onClick={() => setOpen(false)}
           >
             Pricing
           </Link>
-          <Link href="/help" className="text-base font-medium text-[#111]" onClick={() => setOpen(false)}>
+          <Link href="/help" className="text-base font-medium text-gray-900" onClick={() => setOpen(false)}>
             Help
           </Link>
 
-          <div className="mt-2 space-y-4 border-t border-black/10 pt-4">
+          <div className="mt-2 space-y-4 border-t border-gray-200/50 pt-4">
             {dropdowns.map((d) => (
               <div key={d.label}>
-                <p className="text-sm font-semibold text-[#111]/70">{d.label}</p>
+                <p className="text-sm font-semibold text-gray-500">{d.label}</p>
                 <div className="mt-2 flex flex-col gap-2">
                   {d.items.map((item) => (
                     <Link
                       key={item.label}
                       href={item.href}
-                      className="text-base font-medium text-[#111]"
+                      className="text-base font-medium text-gray-900"
                       onClick={() => setOpen(false)}
                     >
                       {item.label}

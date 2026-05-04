@@ -31,25 +31,25 @@ export function Footer() {
   return (
     <footer className="bg-[radial-gradient(circle_at_top,#111_0%,#000_100%)] pt-12 text-white md:pt-16">
       <Container>
-        <div className="flex flex-wrap items-center justify-center gap-8 border-b border-white/10 pb-10 md:justify-between">
+        <div className="flex flex-wrap items-center justify-center gap-8 border-b border-white/8 pb-10 md:justify-between">
           <div className="text-center md:text-left">
             <p className="text-sm font-semibold">Strategic Cloud Ops, for visionary leaders.</p>
-            <p className="mt-1 text-xs text-white/60">relyd Pulse • Cloud Ops • Managed Services</p>
+            <p className="mt-2 text-xs leading-relaxed text-white/55">relyd Pulse • Cloud Ops • Managed Services</p>
           </div>
           <div className="text-center md:text-right">
             <p className="text-sm font-semibold">Get started</p>
-            <p className="mt-1 text-xs text-white/60">Register for FREE at app.relyd.co</p>
+            <p className="mt-2 text-xs leading-relaxed text-white/55">Register for FREE at app.relyd.co</p>
           </div>
         </div>
 
-        <div className="grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-10 py-12 sm:grid-cols-2 sm:gap-x-8 lg:grid-cols-5 lg:gap-x-10">
           {footerColumns.map((col) => (
             <div key={col.title}>
               <p className="text-sm font-semibold">{col.title}</p>
               <ul className="mt-4 space-y-3">
                 {col.links.map((l) => (
                   <li key={l}>
-                    <Link href="#" className="text-sm text-white/70 transition hover:text-white">
+                    <Link href="#" className="text-sm text-white/60 transition-all duration-300 ease-out hover:text-white/95">
                       {l}
                     </Link>
                   </li>
